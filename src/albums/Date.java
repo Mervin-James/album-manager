@@ -49,9 +49,9 @@ public class Date implements Comparable<Date> {
             }
         }
         else {
-            if (this.year % 4 == 0) {
-                if (this.year % 100 == 0) {
-                    if (this.year % 400 == 0) {
+            if (this.year % QUADRENNIAL == 0) {
+                if (this.year % CENTENNIAL == 0) {
+                    if (this.year % QUADRENNIAL == 0) {
                         if (this.day > 29) {
                             return false;
                         }
