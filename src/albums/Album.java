@@ -7,6 +7,10 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
+    private String availability() {
+        return this.isAvailable ? "is available" : "is not available";
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Album) {
@@ -18,7 +22,19 @@ public class Album {
 
     @Override
     public String toString() {
-        return title + "::" + artist + "::" + genre + "::" + releaseDate + "::" + isAvailable;
+        return title + "::" + artist + "::" + genre + "::" + releaseDate + "::" + availability();
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getArtist() {
+        return this.artist;
+    }
+
+    public boolean isAvailable() {
+        return this.isAvailable;
     }
 
     public void setAvailable(boolean isAvailable) {
@@ -29,9 +45,9 @@ public class Album {
         //TODO: See if passing this reference is OK
         return this.releaseDate;
     }
-//
-//    public Genre getGenre() {
-//        //TODO: See if passing this reference is OK
-////        return this.genre;
-//    }
+
+    public Genre getGenre() {
+//        TODO: See if passing this reference is OK
+        return this.genre;
+    }
 }

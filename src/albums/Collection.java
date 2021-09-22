@@ -4,6 +4,16 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    private String printLendingOut(Album album) {
+        String availability = album.isAvailable() ? "lending out and set to not available" : "is not available";
+        return album.getTitle() + "::" + album.getArtist() + " >> " + availability;
+    }
+
+    private String printReturning(Album album) {
+        String availability = album.isAvailable() ? "return cannot be completed" : "returning and set to available";
+        return album.getTitle() + "::" + album.getArtist() + " >> " + availability;
+    }
+
     private int find(Album album) {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album)) {
@@ -104,15 +114,15 @@ public class Collection {
             genreSortedAlbums[i] = albums[i];
         }
         //TODO: Finish Sorting by Genre
-//        for(int i = 0; i < collectionSize - 1; i++) {
-//            for(int j = 0; j < collectionSize - i - 1; j++) {
-//                if(genreSortedAlbums[j].getGenre()) {
-//                    Album tempAlbum = genreSortedAlbums[j];
-//                    genreSortedAlbums[i] = genreSortedAlbums[j];
-//                    genreSortedAlbums[j] = tempAlbum;
-//                }
-//            }
-//        }
+        for(int i = 0; i < collectionSize - 1; i++) {
+            for(int j = 0; j < collectionSize - i - 1; j++) {
+                if(genreSortedAlbums[j].getGenre()) {
+                    Album tempAlbum = genreSortedAlbums[j];
+                    genreSortedAlbums[i] = genreSortedAlbums[j];
+                    genreSortedAlbums[j] = tempAlbum;
+                }
+            }
+        }
         return genreSortedAlbums;
     }
 }
