@@ -116,8 +116,11 @@ public class Collection {
         //TODO: Finish Sorting by Genre
         for(int i = 0; i < collectionSize - 1; i++) {
             for(int j = 0; j < collectionSize - i - 1; j++) {
-                if(genreSortedAlbums[j].getGenre()) {
-                    Album tempAlbum = genreSortedAlbums[j];
+                Genre genre1 = genreSortedAlbums[i].getGenre();
+                Genre genre2 = genreSortedAlbums[j].getGenre();
+
+                if(genre1.toString().compareTo(genre2.toString()) == 1) {
+                    Album tempAlbum = genreSortedAlbums[i];
                     genreSortedAlbums[i] = genreSortedAlbums[j];
                     genreSortedAlbums[j] = tempAlbum;
                 }
