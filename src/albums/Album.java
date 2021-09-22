@@ -20,4 +20,18 @@ public class Album {
     public String toString() {
         return title + "::" + artist + "::" + genre + "::" + releaseDate + "::" + isAvailable;
     }
+
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    public Date getReleaseDate() {
+        //TODO: See if passing this reference is OK
+        return this.releaseDate;
+    }
+//
+//    public Genre getGenre() {
+//        //TODO: See if passing this reference is OK
+////        return this.genre;
+//    }
 }

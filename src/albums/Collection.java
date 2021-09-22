@@ -42,24 +42,77 @@ public class Collection {
     }
 
     public boolean lendingOut(Album album) {
-
+        album.setAvailable(false);
+        return true;
     } //set to not available
 
     public boolean returnAlbum(Album album) {
-
+        album.setAvailable(true);
+        return true;
     } //set to available
 
     public void print() {
+        System.out.println("*List of albums in the collection.");
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
         }
+         System.out.println("*End of List");
     } //display the list without specifying the order
 
     public void printByReleaseDate() {
-
+        Album[] dateSortedAlbums = sortByReleaseDate();
+        int collectionSize = albums.length;
+        System.out.println("*Album collection by the release dates.");
+        for(int i = 0; i<collectionSize; i++) {
+            System.out.println(dateSortedAlbums[i].toString());
+        }
+        System.out.println("*End of List");
     }
 
     public void printByGenre() {
+        Album[] genreSortedAlbums = sortByGenre();
+        int collectionSize = albums.length;
+        System.out.println("*Album collection by genre.");
+        for(int i = 0; i<collectionSize; i++) {
+            System.out.println(genreSortedAlbums[i].toString());
+        }
+        System.out.println("*End of List");
+    }
 
+    private Album[] sortByReleaseDate() {
+        int collectionSize = albums.length;
+        Album[] dateSortedAlbums = new Album[collectionSize];
+        for(int i = 0; i<collectionSize; i++) {
+            dateSortedAlbums[i] = albums[i];
+        }
+        for(int i = 0; i < collectionSize - 1; i++) {
+            for(int j = 0; j < collectionSize - i - 1; j++) {
+                if(dateSortedAlbums[j].getReleaseDate().compareTo(dateSortedAlbums[j+1].getReleaseDate()) == -1) {
+                    Album tempAlbum = dateSortedAlbums[j];
+                    dateSortedAlbums[i] = dateSortedAlbums[j];
+                    dateSortedAlbums[j] = tempAlbum;
+                }
+            }
+        }
+        return dateSortedAlbums;
+    }
+
+    private Album[] sortByGenre() {
+        int collectionSize = albums.length;
+        Album[] genreSortedAlbums = new Album[collectionSize];
+        for(int i = 0; i<collectionSize; i++) {
+            genreSortedAlbums[i] = albums[i];
+        }
+        //TODO: Finish Sorting by Genre
+//        for(int i = 0; i < collectionSize - 1; i++) {
+//            for(int j = 0; j < collectionSize - i - 1; j++) {
+//                if(genreSortedAlbums[j].getGenre()) {
+//                    Album tempAlbum = genreSortedAlbums[j];
+//                    genreSortedAlbums[i] = genreSortedAlbums[j];
+//                    genreSortedAlbums[j] = tempAlbum;
+//                }
+//            }
+//        }
+        return genreSortedAlbums;
     }
 }
