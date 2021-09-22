@@ -26,12 +26,13 @@ public class Album {
     }
 
     public Date getReleaseDate() {
-        //TODO: See if passing this reference is OK
-        return this.releaseDate;
+//        TODO: See if this is redundant
+        Date dateCopy = new Date(this.releaseDate);
+        return dateCopy;
     }
-//
-//    public Genre getGenre() {
-//        //TODO: See if passing this reference is OK
-////        return this.genre;
-//    }
+
+    public Genre getGenre() {
+        //TODO: See if passing this reference is OK
+        return this.genre;
+    }
 }

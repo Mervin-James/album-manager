@@ -23,6 +23,12 @@ public class Date implements Comparable<Date> {
         year = Integer.parseInt(st.nextToken());
     } //take “mm/dd/yyyy” and create a Date object
 
+    public Date(Date date) {
+        this.month = date.month;
+        this.day = date.day;
+        this.year = date.year;
+    }
+
     public Date() {
         Calendar calendar = Calendar.getInstance();
         month = calendar.get(Calendar.MONTH);
