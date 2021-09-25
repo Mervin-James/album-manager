@@ -5,8 +5,8 @@ package albums;
  * and return albums.
  * The Collection class also has methods to print albums in the sequence they
  * are added, by date, and by genre. The private helper methods
- * compartmentalize functionality for the print methods, finding albums in
- * the collection, and growing the collection array.
+ * compartmentalize functionality for the print methods, for finding albums in
+ * the collection, for and growing the collection array.
  *
  * @author Akshar Patel, Mervin James
  */
@@ -42,6 +42,7 @@ public class Collection {
 
     /**
      * Helper method that finds an album in the collection, if it exists.
+     *
      * @param album the album attempted to being found.
      * @return the index of the album inside the collection array, otherwise
      * returns -1 if not found.
@@ -71,6 +72,7 @@ public class Collection {
 
     /**
      * Adds an album to the collection, if it isn't already included.
+     *
      * @param album the album being added to the collection.
      * @return true if the album is added to the collection,
      * otherwise false if the album is already in the collection to begin with.
@@ -88,6 +90,7 @@ public class Collection {
 
     /**
      * Removes an album from the collection, if it exists inside the collection.
+     *
      * @param album the album to be removed.
      * @return true if the album is removed, otherwise false if the
      * album does not exist in the collection to begin with.
@@ -99,7 +102,7 @@ public class Collection {
         }
         Album[] newArray = new Album[numAlbums];
         boolean isSkipped = false;  // marks when the deleted album has been
-                                    // skipped
+        // skipped
         for (int i = 0; i < numAlbums; i++) {
             if (i == albumIndex) {
                 isSkipped = true;
@@ -116,6 +119,7 @@ public class Collection {
 
     /**
      * Sets the status of an album being lent out to unavailable, if found.
+     *
      * @param album the album being lent out.
      * @return true if the album's status has been set to
      * unavailable, otherwise false if the album is not found in the
@@ -132,6 +136,7 @@ public class Collection {
 
     /**
      * Sets the status of an album being returned to available, if found.
+     *
      * @param album the album being returned.
      * @return true if the album's status has been set to available,
      * otherwise false if the album is not found in the collection to begin
@@ -183,6 +188,7 @@ public class Collection {
 
     /**
      * Helper method that sorts the albums by ascending release date.
+     *
      * @return the sorted list of albums in the collection by ascending
      * release date.
      */
@@ -207,6 +213,7 @@ public class Collection {
 
     /**
      * Helper method that sorts the albums in alphabetical genre order.
+     *
      * @return the sorted list of albums in the collection in alphabetical
      * genre order.
      */

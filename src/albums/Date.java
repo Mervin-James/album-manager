@@ -4,26 +4,28 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 /**
- * A class that defines a Date object with year, month, and day.
+ * A class that defines a Date object by year, month, and day.
  * The Date class also has methods to check if a Date is valid, to compare
  * Date objects, and to generate a String representation of a Date object.
- * There are also getters for the day, month, and year attributes.
+ * There are also getter methods defined for the day, month, and year
+ * attributes.
+ *
  * @author Akshar Patel, Mervin James
  */
 public class Date implements Comparable<Date> {
-    private int year;
-    private int month;
-    private int day;
-
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
     public static final int THE_EIGHTYS = 1980;
+    private final int year;
+    private final int month;
+    private final int day;
 
     /**
      * Constructor for the Date class which takes in a date of type String.
      * This constructor uses a StringTokenizer to break the date into tokens,
      * and then parses each token into an Integer.
+     *
      * @param date the String representation of the date of an album
      */
     public Date(String date) {
@@ -37,6 +39,7 @@ public class Date implements Comparable<Date> {
      * Copy constructor for the Date class which takes in a Date object.
      * This constructor is used to generate a new instance of a Date object
      * with the same attributes.
+     *
      * @param date the Date object representation of the date of an album
      */
     public Date(Date date) {
@@ -59,6 +62,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Generates a Date object with today's date information.
+     *
      * @return an instance of a Date object with today's month, day, and year
      * as attributes.
      */
@@ -68,6 +72,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Determines if this Date object has valid attributes.
+     *
      * @return true if this Date object has a valid date between 1980 and the
      * present, false otherwise.
      */
@@ -75,35 +80,24 @@ public class Date implements Comparable<Date> {
         if (this.year < THE_EIGHTYS) {
 
         }
-        if (this.month == 1 || this.month == 3 || this.month == 5 || this.month == 5 || this.month == 6 || this.month == 10 ||this.month == 12) {
-            if (this.day > 31) {
-                return false;
-            }
-        }
-        else if (this.month == 4 || this.month == 5 || this.month == 9 || this.month == 11) {
-            if (this.day > 30) {
-                return false;
-            }
-        }
-        else {
+        if (this.month == 1 || this.month == 3 || this.month == 5 ||
+                this.month == 5 || this.month == 6 || this.month == 10 ||
+                this.month == 12) {
+            return this.day <= 31;
+        } else if (this.month == 4 || this.month == 5 || this.month == 9 ||
+                this.month == 11) {
+            return this.day <= 30;
+        } else {
             if (this.year % QUADRENNIAL == 0) {
                 if (this.year % CENTENNIAL == 0) {
                     if (this.year % QUATERCENTENNIAL == 0) {
-                        if (this.day > 29) {
-                            return false;
-                        }
+                        return this.day <= 29;
                     }
+                } else {
+                    return this.day <= 29;
                 }
-                else {
-                    if (this.day > 29) {
-                        return false;
-                    }
-                }
-            }
-            else {
-                if (this.day > 28) {
-                    return false;
-                }
+            } else {
+                return this.day <= 28;
             }
         }
         return true;
@@ -111,6 +105,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Compares this Date and another Date to determine Date order.
+     *
      * @param date the Date object that this Date object is compared to.
      * @return -1 if this Date precedes the Date being compared to, 1 if this
      * Date postdates the Date being compared to, and 0 if both dates have
@@ -129,8 +124,7 @@ public class Date implements Comparable<Date> {
                 if (this.day < date.day) {
                     return -1;
                 }
-            }
-            else if (this.month < date.month) {
+            } else if (this.month < date.month) {
                 return -1;
             }
         }
@@ -139,6 +133,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Determines if this Date and another object have equivalent attributes.
+     *
      * @param obj the object that this Date object is being compared to.
      * @return true if both objects are Date objects with the same
      * attributes, false otherwise.
@@ -147,13 +142,15 @@ public class Date implements Comparable<Date> {
     public boolean equals(Object obj) {
         if (obj instanceof Date) {
             Date date = (Date) obj;
-            return (date.month == this.month && date.day == this.day && date.year == this.year);
+            return (date.month == this.month && date.day == this.day &&
+                    date.year == this.year);
         }
         return false;
     }
 
     /**
      * Generates a String representation of this Date object.
+     *
      * @return the String representation of this Date object.
      */
     @Override
@@ -162,7 +159,8 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Getter for the day property of this Date object.
+     * Getter method for the day property of this Date object.
+     *
      * @return the month property of this Date object as an int.
      */
     public int getDay() {
@@ -170,7 +168,8 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Getter for the month property of this Date object.
+     * Getter method for the month property of this Date object.
+     *
      * @return the month property of this Date object as an int.
      */
     public int getMonth() {
@@ -178,7 +177,8 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Getter for the year property of this Date object.
+     * Getter method for the year property of this Date object.
+     *
      * @return the year property of this Date object as an int.
      */
     public int getYear() {
