@@ -8,7 +8,7 @@ package albums;
  * compartmentalize functionality for the print methods, finding albums in
  * the collection, and growing the collection array.
  *
- * @author Mervin James, Akshar Patel
+ * @author Akshar Patel, Mervin James
  */
 public class Collection {
     private Album[] albums;

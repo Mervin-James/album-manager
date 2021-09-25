@@ -3,8 +3,12 @@ package albums;
 import java.util.Calendar;
 import java.util.StringTokenizer;
 
-/*
-This class defines the Date abstract data type with year, month, and day.
+/**
+ * A class that defines a Date object with year, month, and day.
+ * The Date class also has methods to check if a Date is valid, to compare
+ * Date objects, and to generate a String representation of a Date object.
+ * There are also getters for the day, month, and year attributes.
+ * @author Akshar Patel, Mervin James
  */
 public class Date implements Comparable<Date> {
     private int year;
@@ -16,6 +20,12 @@ public class Date implements Comparable<Date> {
     public static final int QUATERCENTENNIAL = 400;
     public static final int THE_EIGHTYS = 1980;
 
+    /**
+     * Constructor for the Date class which takes in a date of type String.
+     * This constructor uses a StringTokenizer to break the date into tokens,
+     * and then parses each token into an Integer.
+     * @param date the String representation of the date of an album
+     */
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date, "/");
         month = Integer.parseInt(st.nextToken());
@@ -23,12 +33,23 @@ public class Date implements Comparable<Date> {
         year = Integer.parseInt(st.nextToken());
     } //take “mm/dd/yyyy” and create a Date object
 
+    /**
+     * Copy constructor for the Date class which takes in a Date object.
+     * This constructor is used to generate a new instance of a Date object
+     * with the same attributes.
+     * @param date the Date object representation of the date of an album
+     */
     public Date(Date date) {
         this.month = date.month;
         this.day = date.day;
         this.year = date.year;
     }
 
+    /**
+     * Default constructor for the Date class.
+     * This constructor generates a Date object with today's month, day, and
+     * year.
+     */
     public Date() {
         Calendar calendar = Calendar.getInstance();
         month = calendar.get(Calendar.MONTH);
@@ -36,10 +57,20 @@ public class Date implements Comparable<Date> {
         year = calendar.get(Calendar.YEAR);
     } //create an object with today’s date (see Calendar class)
 
+    /**
+     * Generates a Date object with today's date information.
+     * @return an instance of a Date object with today's month, day, and year
+     * as attributes.
+     */
     public Date today() {
         return new Date();
     }
 
+    /**
+     * Determines if this Date object has valid attributes.
+     * @return true if this Date object has a valid date between 1980 and the
+     * present, false otherwise.
+     */
     public boolean isValid() {
         if (this.year < THE_EIGHTYS) {
 
@@ -78,6 +109,13 @@ public class Date implements Comparable<Date> {
         return true;
     }
 
+    /**
+     * Compares this Date and another Date to determine Date order.
+     * @param date the Date object that this Date object is compared to.
+     * @return -1 if this Date precedes the Date being compared to, 1 if this
+     * Date postdates the Date being compared to, and 0 if both dates have
+     * the equivalent attributes.
+     */
     @Override
     public int compareTo(Date date) {
         if (this.equals(date)) {
@@ -99,6 +137,12 @@ public class Date implements Comparable<Date> {
         return 1;
     }
 
+    /**
+     * Determines if this Date and another object have equivalent attributes.
+     * @param obj the object that this Date object is being compared to.
+     * @return true if both objects are Date objects with the same
+     * attributes, false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Date) {
@@ -108,19 +152,35 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * Generates a String representation of this Date object.
+     * @return the String representation of this Date object.
+     */
     @Override
     public String toString() {
         return month + "/" + day + "/" + year;
     }
 
+    /**
+     * Getter for the day property of this Date object.
+     * @return the month property of this Date object as an int.
+     */
     public int getDay() {
         return day;
     }
 
+    /**
+     * Getter for the month property of this Date object.
+     * @return the month property of this Date object as an int.
+     */
     public int getMonth() {
         return month;
     }
 
+    /**
+     * Getter for the year property of this Date object.
+     * @return the year property of this Date object as an int.
+     */
     public int getYear() {
         return year;
     }
