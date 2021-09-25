@@ -26,6 +26,11 @@ public class Album {
         this.isAvailable = isAvailable;
     }
 
+    public Album(String title, String artist) {
+        this.title = title;
+        this.artist = artist;
+    }
+
     /**
      * Generates a String representation of this album's availability.
      *

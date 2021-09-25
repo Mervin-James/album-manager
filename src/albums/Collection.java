@@ -14,13 +14,29 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    public Collection(Album[] albums, int numAlbums) {
+        this.albums = albums;
+        this.numAlbums = numAlbums;
+    }
+
+    public String albumRemovedMessage(Album album) {
+        return album.getTitle() + "::" + album.getArtist() + " >> deleted.";
+    }
+
+    public String albumAddedMessage(Album album, boolean added) {
+        if (added) {
+            return album.toString() + " >> added.";
+        }
+        return album.toString() + " >> is already in the collection.";
+    }
+
     /**
      * Helper method that generates an output String once an album is lent out.
      *
      * @param album the album being lent out.
      * @return the output String which will be displayed to the user.
      */
-    private String lendingOutOutput(Album album) {
+    public String lendingOutOutput(Album album) {
         String availability = album.isAvailable() ? "lending out and set to " +
                 "not available" : "is not available";
         return album.getTitle() + "::" + album.getArtist() + " >> " +
@@ -33,7 +49,7 @@ public class Collection {
      * @param album the album being returned.
      * @return the output String which will be displayed to the user.
      */
-    private String returningOutput(Album album) {
+    public String returningOutput(Album album) {
         String availability = album.isAvailable() ? "return cannot be " +
                 "completed" : "returning and set to available";
         return album.getTitle() + "::" + album.getArtist() + " >> " +
@@ -100,7 +116,7 @@ public class Collection {
         if (albumIndex == -1) {
             return false;
         }
-        Album[] newArray = new Album[numAlbums];
+        Album[] newArray = new Album[albums.length];
         boolean isSkipped = false;  // marks when the deleted album has been
         // skipped
         for (int i = 0; i < numAlbums; i++) {
@@ -127,7 +143,7 @@ public class Collection {
      */
     public boolean lendingOut(Album album) {
         int albumIndex = find(album);
-        if (albumIndex != -1) {
+        if (albumIndex == -1) {
             return false;
         }
         albums[albumIndex].setAvailable(false);
@@ -144,7 +160,7 @@ public class Collection {
      */
     public boolean returnAlbum(Album album) {
         int albumIndex = find(album);
-        if (albumIndex != -1) {
+        if (albumIndex == -1) {
             return false;
         }
         albums[albumIndex].setAvailable(true);
