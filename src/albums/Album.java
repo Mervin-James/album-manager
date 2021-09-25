@@ -47,7 +47,7 @@ public class Album {
     public boolean equals(Object obj) {
         if (obj instanceof Album) {
             Album album = (Album) obj;
-            return (album.title.equals(this.title) ||
+            return (album.title.equals(this.title) &&
                     album.artist.equals(this.artist));
         }
         return false;

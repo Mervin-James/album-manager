@@ -78,7 +78,7 @@ public class Date implements Comparable<Date> {
      */
     public boolean isValid() {
         if (this.year < THE_EIGHTYS) {
-
+            return false;
         }
         if (this.month == 1 || this.month == 3 || this.month == 5 ||
                 this.month == 5 || this.month == 6 || this.month == 10 ||
