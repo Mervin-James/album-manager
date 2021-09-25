@@ -18,6 +18,14 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
+    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
+        this.title = title;
+        this.artist = artist;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.isAvailable = isAvailable;
+    }
+
     /**
      * Generates a String representation of this album's availability.
      *
