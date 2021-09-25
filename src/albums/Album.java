@@ -42,7 +42,6 @@ public class Album {
     }
 
     public Date getReleaseDate() {
-//        TODO: See if this is redundant
         Date dateCopy = new Date(this.releaseDate);
         return dateCopy;
     }
@@ -51,3 +50,4 @@ public class Album {
         //TODO: See if passing this reference is OK
         return this.genre;
     }
+}
