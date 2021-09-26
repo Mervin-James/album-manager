@@ -9,11 +9,14 @@ public class CollectionManager {
         Collection collection = new Collection(albums, 0);
         Scanner sc = new Scanner(System.in);
         String command = "";
-        while (!command.equals("Q")) {
+        while (true) {
             String input = sc.nextLine();
             String[] splitInput = input.split(",");
             command = splitInput[0];
-            if (command.equals("A") && splitInput.length == 5) {
+            if (command.equals("Q") && splitInput.length == 1) {
+                break;
+            }
+            else if (command.equals("A") && splitInput.length == 5) {
                 addAlbum(collection, splitInput);
             }
             else if (command.equals("D") && splitInput.length == 3) {
@@ -37,9 +40,6 @@ public class CollectionManager {
             else {
                 System.out.println("Invalid command!");
             }
-
-//            System.out.println("numAlbums: " + collection.numAlbums);
-//            System.out.println("albums.length: " + collection.albums.length);
         }
         sc.close();
         System.out.println("Collection Manager terminated.");
