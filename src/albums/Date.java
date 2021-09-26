@@ -167,33 +167,6 @@ public class Date implements Comparable<Date> {
         return month + "/" + day + "/" + year;
     }
 
-//    /**
-//     * Getter method for the day property of this Date object.
-//     *
-//     * @return the month property of this Date object as an int.
-//     */
-//    public int getDay() {
-//        return day;
-//    }
-//
-//    /**
-//     * Getter method for the month property of this Date object.
-//     *
-//     * @return the month property of this Date object as an int.
-//     */
-//    public int getMonth() {
-//        return month;
-//    }
-//
-//    /**
-//     * Getter method for the year property of this Date object.
-//     *
-//     * @return the year property of this Date object as an int.
-//     */
-//    public int getYear() {
-//        return year;
-//    }
-
     public static void main(String[] args) {
         boolean expectedResult = false;
 
@@ -203,8 +176,17 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #1: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
+        } else {
+            System.out.println("Fail.");
         }
-        else {
+
+        //test case #2, a date with an invalid month.
+        date = new Date("13/21/1999");
+        result = date.isValid();
+        System.out.print("Test case #2: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        } else {
             System.out.println("Fail.");
         }
 
@@ -214,20 +196,18 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #3: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
         //test case #4, a date with an invalid day in February in a
-        // non-leap year.
+        //non-leap year.
         date = new Date("2/29/2019");
         result = date.isValid();
         System.out.print("Test case #4: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -237,8 +217,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #5: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -248,8 +227,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #6: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -259,8 +237,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #7: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -270,8 +247,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #8: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -281,8 +257,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #9: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -292,8 +267,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #10: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -303,8 +277,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #11: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -314,8 +287,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #12: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -325,8 +297,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #13: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -336,8 +307,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #14: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -347,8 +317,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #15: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -358,8 +327,7 @@ public class Date implements Comparable<Date> {
         System.out.print("Test case #16: ");
         if (result == expectedResult) {
             System.out.println("Pass.");
-        }
-        else {
+        } else {
             System.out.println("Fail.");
         }
 
@@ -607,6 +575,5 @@ public class Date implements Comparable<Date> {
         else {
             System.out.println("Fail.");
         }
-
     }
 }

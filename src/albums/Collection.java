@@ -1,8 +1,7 @@
 package albums;
 
 /**
- * A class that stores Albums and provides methods to add, remove, lend out,
- * and return albums.
+ * A class that stores Albums and can add, remove, lend, and return albums.
  * The Collection class also has methods to print albums in the sequence they
  * are added, by date, and by genre. The private helper methods
  * compartmentalize functionality for the print methods, for finding albums in
@@ -14,18 +13,42 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    /**
+     * Constructor which generates a Collection from an array of albums.
+     * This constructor takes in an array of albums and the number of
+     * albums in the array as arguments.
+     *
+     * @param albums    the array of albums that comprises the collection.
+     * @param numAlbums the number of albums in the array of albums.
+     */
     public Collection(Album[] albums, int numAlbums) {
         this.albums = albums;
         this.numAlbums = numAlbums;
     }
 
+    /**
+     * Generates an output message after attempting to remove an album.
+     *
+     * @param album   the album attempting to being removed.
+     * @param removed the status of the album's removal.
+     * @return
+     */
     public String albumRemovedMessage(Album album, boolean removed) {
         if (removed) {
-            return album.getTitle() + "::" + album.getArtist() + " >> deleted.";
+            return album.getTitle() + "::" + album.getArtist() +
+                    " >> deleted.";
         }
-        return album.getTitle() + "::" + album.getArtist() + " >> is not in the collection.";
+        return album.getTitle() + "::" + album.getArtist() +
+                " >> is not in the collection.";
     }
 
+    /**
+     * Generates an output message after attempting to add an album.
+     *
+     * @param album the album attempting to being included.
+     * @param added the status of the album's inclusion.
+     * @return
+     */
     public String albumAddedMessage(Album album, boolean added) {
         if (added) {
             return album.toString() + " >> added.";
@@ -34,29 +57,33 @@ public class Collection {
     }
 
     /**
-     * Helper method that generates an output String once an album is lent out.
+     * Helper method that generates a message once an album is lent out.
      *
      * @param album the album being lent out.
      * @return the output String which will be displayed to the user.
      */
     public String lendingOutOutput(Album album, boolean lentOut) {
         if (lentOut) {
-            return album.getTitle() + "::" + album.getArtist() + " >> lending out and set to not available.";
+            return album.getTitle() + "::" + album.getArtist() +
+                    " >> lending out and set to not available.";
         }
-        return album.getTitle() + "::" + album.getArtist() + " >> is not available.";
+        return album.getTitle() + "::" + album.getArtist() +
+                " >> is not available.";
     }
 
     /**
-     * Helper method that generates an output String once an album is returned.
+     * Helper method that generates a message once an album is returned.
      *
      * @param album the album being returned.
      * @return the output String which will be displayed to the user.
      */
     public String returningOutput(Album album, boolean returned) {
         if (returned) {
-            return album.getTitle() + "::" + album.getArtist() + " >> returning and set to available.";
+            return album.getTitle() + "::" + album.getArtist() +
+                    " >> returning and set to available.";
         }
-        return album.getTitle() + "::" + album.getArtist() + " >> return cannot be completed.";
+        return album.getTitle() + "::" + album.getArtist() +
+                " >> return cannot be completed.";
     }
 
     /**
@@ -94,7 +121,8 @@ public class Collection {
      *
      * @param album the album being added to the collection.
      * @return true if the album is added to the collection,
-     * otherwise false if the album is already in the collection to begin with.
+     * otherwise false if the album is already in the collection to begin
+     * with.
      */
     public boolean add(Album album) {
         if (find(album) != -1) { //if the album is in the collection
@@ -108,7 +136,7 @@ public class Collection {
     }
 
     /**
-     * Removes an album from the collection, if it exists inside the collection.
+     * Removes an album from the collection, if it exists inside.
      *
      * @param album the album to be removed.
      * @return true if the album is removed, otherwise false if the
@@ -233,7 +261,8 @@ public class Collection {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
                 if (dateSortedAlbums[j].getReleaseDate()
-                        .compareTo(dateSortedAlbums[minIndex].getReleaseDate()) == -1) {
+                        .compareTo(dateSortedAlbums[minIndex].getReleaseDate()) ==
+                        -1) {
                     minIndex = j;
                 }
             }
@@ -259,7 +288,8 @@ public class Collection {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
                 if (genreSortedAlbums[j].getGenre()
-                        .compareTo(genreSortedAlbums[minIndex].getGenre()) < 0) {
+                        .compareTo(genreSortedAlbums[minIndex].getGenre()) <
+                        0) {
                     minIndex = j;
                 }
             }

@@ -12,13 +12,14 @@ package albums;
  * @author Akshar Patel, Mervin James
  */
 public class Album {
-    private String title;
-    private String artist;
+    private final String title;
+    private final String artist;
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
     private Date releaseDate;
     private boolean isAvailable;
 
-    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
+    public Album(String title, String artist, Genre genre, Date releaseDate,
+                 boolean isAvailable) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
@@ -42,7 +43,9 @@ public class Album {
     }
 
     /**
-     * Determines if this Album and an object have identical titles and artists.
+     * Determines if this album and an object are equivalent.
+     * If the object is an Album, the method compares this album's title and
+     * artist attributes to the object's.
      *
      * @param obj the object that this Album is being compared to.
      * @return true if both objects are Album objects with identical titles
