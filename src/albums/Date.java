@@ -81,10 +81,10 @@ public class Date implements Comparable<Date> {
             return false;
         }
         if (this.month == 1 || this.month == 3 || this.month == 5 ||
-                this.month == 5 || this.month == 6 || this.month == 10 ||
+                this.month == 7 || this.month == 8 || this.month == 10 ||
                 this.month == 12) {
             return this.day <= 31;
-        } else if (this.month == 4 || this.month == 5 || this.month == 9 ||
+        } else if (this.month == 4 || this.month == 6 || this.month == 9 ||
                 this.month == 11) {
             return this.day <= 30;
         } else {
