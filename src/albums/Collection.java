@@ -39,11 +39,11 @@ public class Collection {
      * @param album the album being lent out.
      * @return the output String which will be displayed to the user.
      */
-    public String lendingOutOutput(Album album) {
-        String availability = album.isAvailable() ? "lending out and set to " +
-                "not available" : "is not available";
-        return album.getTitle() + "::" + album.getArtist() + " >> " +
-                availability;
+    public String lendingOutOutput(Album album, boolean lentOut) {
+        if (lentOut) {
+            return album.getTitle() + "::" + album.getArtist() + " >> lending out and set to not available.";
+        }
+        return album.getTitle() + "::" + album.getArtist() + " >> is not available.";
     }
 
     /**
@@ -52,11 +52,11 @@ public class Collection {
      * @param album the album being returned.
      * @return the output String which will be displayed to the user.
      */
-    public String returningOutput(Album album) {
-        String availability = album.isAvailable() ? "return cannot be " +
-                "completed" : "returning and set to available";
-        return album.getTitle() + "::" + album.getArtist() + " >> " +
-                availability;
+    public String returningOutput(Album album, boolean returned) {
+        if (returned) {
+            return album.getTitle() + "::" + album.getArtist() + " >> returning and set to available.";
+        }
+        return album.getTitle() + "::" + album.getArtist() + " >> return cannot be completed.";
     }
 
     /**
@@ -147,7 +147,7 @@ public class Collection {
      */
     public boolean lendingOut(Album album) {
         int albumIndex = find(album);
-        if (albumIndex == -1) {
+        if (albumIndex == -1 || !albums[albumIndex].isAvailable()) {
             return false;
         }
         albums[albumIndex].setAvailable(false);
@@ -164,7 +164,7 @@ public class Collection {
      */
     public boolean returnAlbum(Album album) {
         int albumIndex = find(album);
-        if (albumIndex == -1) {
+        if (albumIndex == -1 || albums[albumIndex].isAvailable()) {
             return false;
         }
         albums[albumIndex].setAvailable(true);

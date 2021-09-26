@@ -69,16 +69,14 @@ public class CollectionManager {
         String title = splitInput[1];
         String artist = splitInput[2];
         Album album = new Album(title, artist);
-        collection.lendingOut(album);
-        System.out.println(collection.lendingOutOutput(album));
+        System.out.println(collection.lendingOutOutput(album, collection.lendingOut(album)));
     }
 
     private void returnAlbum(Collection collection, String[] splitInput) {
         String title = splitInput[1];
         String artist = splitInput[2];
         Album album = new Album(title, artist);
-        collection.returnAlbum(album);
-        System.out.println(collection.returningOutput(album));
+        System.out.println(collection.returningOutput(album, collection.returnAlbum(album)));
     }
 
     private Genre checkGenre(String stringGenre) {
