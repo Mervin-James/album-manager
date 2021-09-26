@@ -139,7 +139,7 @@ public class Collection {
      * @param album the album being lent out.
      * @return true if the album's status has been set to
      * unavailable, otherwise false if the album is not found in the
-     * collection to begin with.
+     * collection to begin with.jsdf
      */
     public boolean lendingOut(Album album) {
         int albumIndex = find(album);
@@ -171,6 +171,10 @@ public class Collection {
      * Prints all the albums in the collection.
      */
     public void print() {
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
         System.out.println("*List of albums in the collection.");
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
@@ -182,6 +186,10 @@ public class Collection {
      * Prints all the albums in the collection by ascending release date.
      */
     public void printByReleaseDate() {
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
         Album[] dateSortedAlbums = sortByReleaseDate();
         System.out.println("*Album collection by the release dates.");
         for (int i = 0; i < numAlbums; i++) {
@@ -194,6 +202,10 @@ public class Collection {
      * Prints all the albums in the collection in alphabetical genre order.
      */
     public void printByGenre() {
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+            return;
+        }
         Album[] genreSortedAlbums = sortByGenre();
         System.out.println("*Album collection by genre.");
         for (int i = 0; i < numAlbums; i++) {

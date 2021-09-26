@@ -34,6 +34,9 @@ public class CollectionManager {
             else if (command.equals("PG")) {
                 collection.printByGenre();
             }
+            else {
+                System.out.println("Invalid command!");
+            }
 
 //            System.out.println("numAlbums: " + collection.numAlbums);
 //            System.out.println("albums.length: " + collection.albums.length);
