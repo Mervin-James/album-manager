@@ -62,8 +62,7 @@ public class CollectionManager {
         String title = splitInput[1];
         String artist = splitInput[2];
         Album album = new Album(title, artist);
-        collection.remove(album);
-        System.out.println(collection.albumRemovedMessage(album));
+        System.out.println(collection.albumRemovedMessage(album, collection.remove(album)));
     }
 
     private void lendOutAlbum(Collection collection, String[] splitInput) {

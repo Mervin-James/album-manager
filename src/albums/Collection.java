@@ -19,8 +19,11 @@ public class Collection {
         this.numAlbums = numAlbums;
     }
 
-    public String albumRemovedMessage(Album album) {
-        return album.getTitle() + "::" + album.getArtist() + " >> deleted.";
+    public String albumRemovedMessage(Album album, boolean removed) {
+        if (removed) {
+            return album.getTitle() + "::" + album.getArtist() + " >> deleted.";
+        }
+        return album.getTitle() + "::" + album.getArtist() + " >> is not in the collection.";
     }
 
     public String albumAddedMessage(Album album, boolean added) {
@@ -129,6 +132,7 @@ public class Collection {
             }
             newArray[i] = albums[i];
         }
+        numAlbums--;
         albums = newArray;
         return true;
     }
@@ -179,7 +183,7 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
         }
-        System.out.println("*End of List");
+        System.out.println("*End of list");
     } //display the list without specifying the order
 
     /**
@@ -195,7 +199,7 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(dateSortedAlbums[i].toString());
         }
-        System.out.println("*End of List");
+        System.out.println("*End of list");
     }
 
     /**
@@ -211,7 +215,7 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(genreSortedAlbums[i].toString());
         }
-        System.out.println("*End of List");
+        System.out.println("*End of list");
     }
 
     /**
@@ -225,16 +229,28 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             dateSortedAlbums[i] = albums[i];
         }
+//        for (int i = 0; i < numAlbums - 1; i++) {
+//            for (int j = 0; j < numAlbums - i - 1; j++) {
+//                if (dateSortedAlbums[j].getReleaseDate()
+//                        .compareTo(dateSortedAlbums[j + 1].getReleaseDate()) ==
+//                        -1) {
+//                    Album tempAlbum = dateSortedAlbums[j];
+//                    dateSortedAlbums[i] = dateSortedAlbums[j];
+//                    dateSortedAlbums[j] = tempAlbum;
+//                }
+//            }
+//        }
         for (int i = 0; i < numAlbums - 1; i++) {
-            for (int j = 0; j < numAlbums - i - 1; j++) {
+            int minIndex = i;
+            for (int j = i + 1; j < numAlbums; j++) {
                 if (dateSortedAlbums[j].getReleaseDate()
-                        .compareTo(dateSortedAlbums[j + 1].getReleaseDate()) ==
-                        -1) {
-                    Album tempAlbum = dateSortedAlbums[j];
-                    dateSortedAlbums[i] = dateSortedAlbums[j];
-                    dateSortedAlbums[j] = tempAlbum;
+                        .compareTo(dateSortedAlbums[minIndex].getReleaseDate()) == -1) {
+                    minIndex = j;
                 }
             }
+            Album tempAlbum = dateSortedAlbums[minIndex];
+            dateSortedAlbums[minIndex] = dateSortedAlbums[i];
+            dateSortedAlbums[i] = tempAlbum;
         }
         return dateSortedAlbums;
     }
@@ -250,17 +266,29 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             genreSortedAlbums[i] = albums[i];
         }
+//        for (int i = 0; i < numAlbums - 1; i++) {
+//            for (int j = 0; j < numAlbums - i - 1; j++) {
+//                Genre genre1 = genreSortedAlbums[i].getGenre();
+//                Genre genre2 = genreSortedAlbums[j].getGenre();
+//
+//                if (genre1.toString().compareTo(genre2.toString()) == 1) {
+//                    Album tempAlbum = genreSortedAlbums[i];
+//                    genreSortedAlbums[i] = genreSortedAlbums[j];
+//                    genreSortedAlbums[j] = tempAlbum;
+//                }
+//            }
+//        }
         for (int i = 0; i < numAlbums - 1; i++) {
-            for (int j = 0; j < numAlbums - i - 1; j++) {
-                Genre genre1 = genreSortedAlbums[i].getGenre();
-                Genre genre2 = genreSortedAlbums[j].getGenre();
-
-                if (genre1.toString().compareTo(genre2.toString()) == 1) {
-                    Album tempAlbum = genreSortedAlbums[i];
-                    genreSortedAlbums[i] = genreSortedAlbums[j];
-                    genreSortedAlbums[j] = tempAlbum;
+            int minIndex = i;
+            for (int j = i + 1; j < numAlbums; j++) {
+                if (genreSortedAlbums[j].getGenre()
+                        .compareTo(genreSortedAlbums[minIndex].getGenre()) < 0) {
+                    minIndex = j;
                 }
             }
+            Album tempAlbum = genreSortedAlbums[minIndex];
+            genreSortedAlbums[minIndex] = genreSortedAlbums[i];
+            genreSortedAlbums[i] = tempAlbum;
         }
         return genreSortedAlbums;
     }
