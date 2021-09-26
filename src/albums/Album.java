@@ -112,11 +112,10 @@ public class Album {
     /**
      * Getter method for this Album's release date.
      *
-     * @return a copy of this Album's releaseDate property as a Date object.
+     * @return this Album's releaseDate property as a Date object.
      */
     public Date getReleaseDate() {
-        Date dateCopy = new Date(this.releaseDate);
-        return dateCopy;
+        return this.releaseDate;
     }
 
     /**
