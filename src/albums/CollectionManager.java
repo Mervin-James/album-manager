@@ -13,25 +13,25 @@ public class CollectionManager {
             String input = sc.nextLine();
             String[] splitInput = input.split(",");
             command = splitInput[0];
-            if (command.equals("A")) {
+            if (command.equals("A") && splitInput.length == 5) {
                 addAlbum(collection, splitInput);
             }
-            else if (command.equals("D")) {
+            else if (command.equals("D") && splitInput.length == 3) {
                 removeAlbum(collection, splitInput);
             }
-            else if (command.equals("L")) {
+            else if (command.equals("L") && splitInput.length == 3) {
                 lendOutAlbum(collection, splitInput);
             }
-            else if (command.equals("R")) {
+            else if (command.equals("R") && splitInput.length == 3) {
                 returnAlbum(collection, splitInput);
             }
-            else if (command.equals("P")) {
+            else if (command.equals("P") && splitInput.length == 1) {
                 collection.print();
             }
-            else if (command.equals("PD")) {
+            else if (command.equals("PD") && splitInput.length == 1) {
                 collection.printByReleaseDate();
             }
-            else if (command.equals("PG")) {
+            else if (command.equals("PG") && splitInput.length == 1) {
                 collection.printByGenre();
             }
             else {
