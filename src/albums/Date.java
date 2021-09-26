@@ -80,6 +80,12 @@ public class Date implements Comparable<Date> {
         if (this.year < THE_EIGHTYS) {
             return false;
         }
+        if (this.compareTo(today()) == 1) {
+            return false;
+        }
+        if (this.month < 1 || this.day < 1 || this.year < 1) {
+            return false;
+        }
         if (this.month == 1 || this.month == 3 || this.month == 5 ||
                 this.month == 7 || this.month == 8 || this.month == 10 ||
                 this.month == 12) {
@@ -87,7 +93,7 @@ public class Date implements Comparable<Date> {
         } else if (this.month == 4 || this.month == 6 || this.month == 9 ||
                 this.month == 11) {
             return this.day <= 30;
-        } else {
+        } else if (this.month == 2) {
             if (this.year % QUADRENNIAL == 0) {
                 if (this.year % CENTENNIAL == 0) {
                     if (this.year % QUATERCENTENNIAL == 0) {
@@ -99,6 +105,9 @@ public class Date implements Comparable<Date> {
             } else {
                 return this.day <= 28;
             }
+        }
+        else {
+            return false;
         }
         return true;
     }
@@ -183,5 +192,191 @@ public class Date implements Comparable<Date> {
      */
     public int getYear() {
         return year;
+    }
+
+    public static void main(String[] args) {
+        boolean expectedResult = false;
+
+        //test case #1, a date with the year before 1980 should be invalid.
+        Date date = new Date("12/31/1979");
+        boolean result = date.isValid();
+        System.out.print("Test case #1: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #2, a date with an invalid month.
+        date = new Date("13/21/1999");
+        result = date.isValid();
+        System.out.print("Test case #2: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #3, a date with an invalid day in January.
+        date = new Date("1/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #3: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #4, a date with an invalid day in February in a
+        // non-leap year.
+        date = new Date("2/29/2019");
+        result = date.isValid();
+        System.out.print("Test case #4: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #5, a date with an invalid day in March.
+        date = new Date("3/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #5: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #6, a date with an invalid day in April.
+        date = new Date("4/31/2019");
+        result = date.isValid();
+        System.out.print("Test case #6: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #7, a date with an invalid day in May.
+        date = new Date("5/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #7: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #8, a date with an invalid day in June.
+        date = new Date("6/31/2019");
+        result = date.isValid();
+        System.out.print("Test case #8: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #9, a date with an invalid day in July.
+        date = new Date("7/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #9: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #10, a date with an invalid day in August.
+        date = new Date("8/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #10: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #11, a date with an invalid day in September.
+        date = new Date("9/31/2019");
+        result = date.isValid();
+        System.out.print("Test case #11: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #12, a date with an invalid day in October.
+        date = new Date("10/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #12: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #13, a date with an invalid day in November.
+        date = new Date("11/31/2019");
+        result = date.isValid();
+        System.out.print("Test case #13: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #14, a date with an invalid day in December.
+        date = new Date("12/32/2019");
+        result = date.isValid();
+        System.out.print("Test case #14: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #15, a date after the present date.
+        date = new Date("12/1/2021");
+        result = date.isValid();
+        System.out.print("Test case #15: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+        //test case #16, a date with a negative value for day.
+        date = new Date("11/-1/2019");
+        result = date.isValid();
+        System.out.print("Test case #16: ");
+        if (result == expectedResult) {
+            System.out.println("Pass.");
+        }
+        else {
+            System.out.println("Fail.");
+        }
+
+
+
+
+
     }
 }

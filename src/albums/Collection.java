@@ -229,17 +229,6 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             dateSortedAlbums[i] = albums[i];
         }
-//        for (int i = 0; i < numAlbums - 1; i++) {
-//            for (int j = 0; j < numAlbums - i - 1; j++) {
-//                if (dateSortedAlbums[j].getReleaseDate()
-//                        .compareTo(dateSortedAlbums[j + 1].getReleaseDate()) ==
-//                        -1) {
-//                    Album tempAlbum = dateSortedAlbums[j];
-//                    dateSortedAlbums[i] = dateSortedAlbums[j];
-//                    dateSortedAlbums[j] = tempAlbum;
-//                }
-//            }
-//        }
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
@@ -266,18 +255,6 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             genreSortedAlbums[i] = albums[i];
         }
-//        for (int i = 0; i < numAlbums - 1; i++) {
-//            for (int j = 0; j < numAlbums - i - 1; j++) {
-//                Genre genre1 = genreSortedAlbums[i].getGenre();
-//                Genre genre2 = genreSortedAlbums[j].getGenre();
-//
-//                if (genre1.toString().compareTo(genre2.toString()) == 1) {
-//                    Album tempAlbum = genreSortedAlbums[i];
-//                    genreSortedAlbums[i] = genreSortedAlbums[j];
-//                    genreSortedAlbums[j] = tempAlbum;
-//                }
-//            }
-//        }
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
