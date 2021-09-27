@@ -226,10 +226,10 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
-        Album[] dateSortedAlbums = sortByReleaseDate();
+        albums = sortByReleaseDate();
         System.out.println("*Album collection by the release dates.");
         for (int i = 0; i < numAlbums; i++) {
-            System.out.println(dateSortedAlbums[i].toString());
+            System.out.println(albums[i].toString());
         }
         System.out.println("*End of list");
     }
@@ -242,10 +242,10 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
-        Album[] genreSortedAlbums = sortByGenre();
+        albums = sortByGenre();
         System.out.println("*Album collection by genre.");
         for (int i = 0; i < numAlbums; i++) {
-            System.out.println(genreSortedAlbums[i].toString());
+            System.out.println(albums[i].toString());
         }
         System.out.println("*End of list");
     }
@@ -257,24 +257,20 @@ public class Collection {
      * release date.
      */
     private Album[] sortByReleaseDate() {
-        Album[] dateSortedAlbums = new Album[numAlbums];
-        for (int i = 0; i < numAlbums; i++) {
-            dateSortedAlbums[i] = albums[i];
-        }
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
-                if (dateSortedAlbums[j].getReleaseDate()
-                        .compareTo(dateSortedAlbums[minIndex].getReleaseDate()) ==
+                if (albums[j].getReleaseDate()
+                        .compareTo(albums[minIndex].getReleaseDate()) ==
                         -1) {
                     minIndex = j;
                 }
             }
-            Album tempAlbum = dateSortedAlbums[minIndex];
-            dateSortedAlbums[minIndex] = dateSortedAlbums[i];
-            dateSortedAlbums[i] = tempAlbum;
+            Album tempAlbum = albums[minIndex];
+            albums[minIndex] = albums[i];
+            albums[i] = tempAlbum;
         }
-        return dateSortedAlbums;
+        return albums;
     }
 
     /**
@@ -284,23 +280,19 @@ public class Collection {
      * genre order.
      */
     private Album[] sortByGenre() {
-        Album[] genreSortedAlbums = new Album[numAlbums];
-        for (int i = 0; i < numAlbums; i++) {
-            genreSortedAlbums[i] = albums[i];
-        }
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
-                if (genreSortedAlbums[j].getGenre()
-                        .compareTo(genreSortedAlbums[minIndex].getGenre()) <
+                if (albums[j].getGenre()
+                        .compareTo(albums[minIndex].getGenre()) <
                         0) {
                     minIndex = j;
                 }
             }
-            Album tempAlbum = genreSortedAlbums[minIndex];
-            genreSortedAlbums[minIndex] = genreSortedAlbums[i];
-            genreSortedAlbums[i] = tempAlbum;
+            Album tempAlbum = albums[minIndex];
+            albums[minIndex] = albums[i];
+            albums[i] = tempAlbum;
         }
-        return genreSortedAlbums;
+        return albums;
     }
 }
