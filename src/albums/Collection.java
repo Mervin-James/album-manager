@@ -226,7 +226,7 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
-        albums = sortByReleaseDate();
+        sortByReleaseDate();
         System.out.println("*Album collection by the release dates.");
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
@@ -242,7 +242,7 @@ public class Collection {
             System.out.println("The collection is empty!");
             return;
         }
-        albums = sortByGenre();
+        sortByGenre();
         System.out.println("*Album collection by genre.");
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
@@ -252,11 +252,8 @@ public class Collection {
 
     /**
      * Helper method that sorts the albums by ascending release date.
-     *
-     * @return the sorted list of albums in the collection by ascending
-     * release date.
      */
-    private Album[] sortByReleaseDate() {
+    private void sortByReleaseDate() {
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
@@ -270,16 +267,12 @@ public class Collection {
             albums[minIndex] = albums[i];
             albums[i] = tempAlbum;
         }
-        return albums;
     }
 
     /**
      * Helper method that sorts the albums in alphabetical genre order.
-     *
-     * @return the sorted list of albums in the collection in alphabetical
-     * genre order.
      */
-    private Album[] sortByGenre() {
+    private void sortByGenre() {
         for (int i = 0; i < numAlbums - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < numAlbums; j++) {
@@ -293,6 +286,5 @@ public class Collection {
             albums[minIndex] = albums[i];
             albums[i] = tempAlbum;
         }
-        return albums;
     }
 }
