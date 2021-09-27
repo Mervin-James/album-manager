@@ -14,7 +14,7 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
     /**
-     * Constructor which generates a Collection from an array of albums.
+     * Constructor which generates a collection from an array of albums.
      * This constructor takes in an array of albums and the number of
      * albums in the array as arguments.
      *
@@ -31,7 +31,8 @@ public class Collection {
      *
      * @param album   the album attempting to being removed.
      * @param removed the status of the album's removal.
-     * @return
+     * @return the output message of the status of the operation to remove
+     * the album.
      */
     public String albumRemovedMessage(Album album, boolean removed) {
         if (removed) {
@@ -47,7 +48,8 @@ public class Collection {
      *
      * @param album the album attempting to being included.
      * @param added the status of the album's inclusion.
-     * @return
+     * @return the output message of the status of the operation to add
+     * the album.
      */
     public String albumAddedMessage(Album album, boolean added) {
         if (added) {
@@ -59,7 +61,8 @@ public class Collection {
     /**
      * Helper method that generates a message once an album is lent out.
      *
-     * @param album the album being lent out.
+     * @param album   the album being lent out.
+     * @param lentOut the availability status of the album being lent out.
      * @return the output String which will be displayed to the user.
      */
     public String lendingOutOutput(Album album, boolean lentOut) {
@@ -74,7 +77,8 @@ public class Collection {
     /**
      * Helper method that generates a message once an album is returned.
      *
-     * @param album the album being returned.
+     * @param album    the album being returned.
+     * @param returned the availability status of the album being returned.
      * @return the output String which will be displayed to the user.
      */
     public String returningOutput(Album album, boolean returned) {

@@ -48,6 +48,16 @@ public class CollectionManager {
         System.out.println("Collection Manager terminated.");
     }
 
+    /**
+     * Adds an album to the collection based on the user's input.
+     * This method validates the user's input and creates a new album
+     * based on the user's input into the command line. This method then
+     * prints the output of this operation to the console.
+     *
+     * @param collection the collection of the user's albums.
+     * @param splitInput the user's input from the command line seperated
+     *                   into fields for the album being added.
+     */
     private void addAlbum(Collection collection, String[] splitInput) {
         String title = splitInput[1];
         String artist = splitInput[2];
@@ -62,6 +72,16 @@ public class CollectionManager {
                 collection.add(album)));
     }
 
+    /**
+     * Removes an album from the collection based on the user's input.
+     * This method deletes an album based on the user's input into the
+     * command line and then prints the output of this operation
+     * to the console.
+     *
+     * @param collection the collection of the user's albums.
+     * @param splitInput the user's input from the command line seperated
+     *                   into fields for the album being removed.
+     */
     private void removeAlbum(Collection collection, String[] splitInput) {
         String title = splitInput[1];
         String artist = splitInput[2];
@@ -70,6 +90,15 @@ public class CollectionManager {
                 collection.remove(album)));
     }
 
+    /**
+     * Lends out an album from the collection based on the user's input.
+     * This method lends out an album based on the user's input into the
+     * command line and prints the output of this operation to the console.
+     *
+     * @param collection the collection of the user's albums.
+     * @param splitInput the user's input from the command line seperated
+     *                   into fields for the album being lent out.
+     */
     private void lendOutAlbum(Collection collection, String[] splitInput) {
         String title = splitInput[1];
         String artist = splitInput[2];
@@ -78,6 +107,16 @@ public class CollectionManager {
                 collection.lendingOut(album)));
     }
 
+    /**
+     * Returns an album to the collection based on the user's input.
+     * This method returns an album to the collection based on the user's
+     * input into the command line and prints the output of this operation
+     * to the console.
+     *
+     * @param collection the collection of the user's albums.
+     * @param splitInput the user's input from the command line seperated
+     *                   into fields for the album being returned.
+     */
     private void returnAlbum(Collection collection, String[] splitInput) {
         String title = splitInput[1];
         String artist = splitInput[2];
@@ -86,6 +125,12 @@ public class CollectionManager {
                 collection.returnAlbum(album)));
     }
 
+    /**
+     * Determines an album's genre based on the user's input.
+     *
+     * @param stringGenre the user's genre input into the command line.
+     * @return the genre belonging to an album.
+     */
     private Genre checkGenre(String stringGenre) {
         if (stringGenre.equals("Classical") ||
                 stringGenre.equals("classical")) {

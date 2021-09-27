@@ -18,6 +18,16 @@ public class Album {
     private Date releaseDate;
     private boolean isAvailable;
 
+    /**
+     * Constructs an album from title, artist, genre, date, and availability.
+     *
+     * @param title       the name of the album.
+     * @param artist      the name of the artist of the album.
+     * @param genre       the genre of the album.
+     * @param releaseDate the date the album was released.
+     * @param isAvailable the status of the availability of the album in
+     *                    the collection.
+     */
     public Album(String title, String artist, Genre genre, Date releaseDate,
                  boolean isAvailable) {
         this.title = title;
@@ -27,6 +37,12 @@ public class Album {
         this.isAvailable = isAvailable;
     }
 
+    /**
+     * Constructs an album from its title and artist.
+     *
+     * @param title  the name of the album.
+     * @param artist the name of the artist of the album.
+     */
     public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
