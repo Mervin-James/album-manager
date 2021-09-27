@@ -61,6 +61,112 @@ public class Date implements Comparable<Date> {
     } //create an object with today’s date (see Calendar class)
 
     /**
+     * Generates a Date object with today's date information.
+     *
+     * @return an instance of a Date object with today's month, day, and year
+     * as attributes.
+     */
+    public Date today() {
+        return new Date();
+    }
+
+    /**
+     * Determines if this Date object has valid attributes.
+     *
+     * @return true if this Date object has a valid date between 1980 and the
+     * present, false otherwise.
+     */
+    public boolean isValid() {
+        if (this.year < THE_EIGHTYS) {
+            return false;
+        }
+        if (this.compareTo(today()) == 1) {
+            return false;
+        }
+        if (this.month < 1 || this.day < 1 || this.year < 1) {
+            return false;
+        }
+        if (this.month == 1 || this.month == 3 || this.month == 5 ||
+                this.month == 7 || this.month == 8 || this.month == 10 ||
+                this.month == 12) {
+            return this.day <= 31;
+        } else if (this.month == 4 || this.month == 6 || this.month == 9 ||
+                this.month == 11) {
+            return this.day <= 30;
+        } else if (this.month == 2) {
+            if (this.year % QUADRENNIAL == 0) {
+                if (this.year % CENTENNIAL == 0) {
+                    if (this.year % QUATERCENTENNIAL == 0) {
+                        return this.day <= 29;
+                    }
+                } else {
+                    return this.day <= 29;
+                }
+            } else {
+                return this.day <= 28;
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Compares this Date and another Date to determine Date order.
+     *
+     * @param date the Date object that this Date object is compared to.
+     * @return -1 if this Date precedes the Date being compared to, 1 if this
+     * Date postdates the Date being compared to, and 0 if both dates have
+     * the equivalent attributes.
+     */
+    @Override
+    public int compareTo(Date date) {
+        if (this.equals(date)) {
+            return 0;
+        }
+        if (this.year < date.year) {
+            return -1;
+        }
+        if (this.year == date.year) {
+            if (this.month == date.month) {
+                if (this.day < date.day) {
+                    return -1;
+                }
+            } else if (this.month < date.month) {
+                return -1;
+            }
+        }
+        return 1;
+    }
+
+    /**
+     * Determines if this Date and another object have equivalent attributes.
+     *
+     * @param obj the object that this Date object is being compared to.
+     * @return true if both objects are Date objects with the same
+     * attributes, false otherwise.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Date) {
+            Date date = (Date) obj;
+            return (date.month == this.month && date.day == this.day &&
+                    date.year == this.year);
+        }
+        return false;
+    }
+
+    /**
+     * Generates a String representation of this Date object.
+     *
+     * @return the String representation of this Date object.
+     */
+    @Override
+    public String toString() {
+        return month + "/" + day + "/" + year;
+    }
+
+    /**
      * Testbed main to test the isValid() method in this class.
      *
      * @param args the command line arguments.
@@ -453,111 +559,5 @@ public class Date implements Comparable<Date> {
         } else {
             System.out.println("Fail.");
         }
-    }
-
-    /**
-     * Generates a Date object with today's date information.
-     *
-     * @return an instance of a Date object with today's month, day, and year
-     * as attributes.
-     */
-    public Date today() {
-        return new Date();
-    }
-
-    /**
-     * Determines if this Date object has valid attributes.
-     *
-     * @return true if this Date object has a valid date between 1980 and the
-     * present, false otherwise.
-     */
-    public boolean isValid() {
-        if (this.year < THE_EIGHTYS) {
-            return false;
-        }
-        if (this.compareTo(today()) == 1) {
-            return false;
-        }
-        if (this.month < 1 || this.day < 1 || this.year < 1) {
-            return false;
-        }
-        if (this.month == 1 || this.month == 3 || this.month == 5 ||
-                this.month == 7 || this.month == 8 || this.month == 10 ||
-                this.month == 12) {
-            return this.day <= 31;
-        } else if (this.month == 4 || this.month == 6 || this.month == 9 ||
-                this.month == 11) {
-            return this.day <= 30;
-        } else if (this.month == 2) {
-            if (this.year % QUADRENNIAL == 0) {
-                if (this.year % CENTENNIAL == 0) {
-                    if (this.year % QUATERCENTENNIAL == 0) {
-                        return this.day <= 29;
-                    }
-                } else {
-                    return this.day <= 29;
-                }
-            } else {
-                return this.day <= 28;
-            }
-        } else {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Compares this Date and another Date to determine Date order.
-     *
-     * @param date the Date object that this Date object is compared to.
-     * @return -1 if this Date precedes the Date being compared to, 1 if this
-     * Date postdates the Date being compared to, and 0 if both dates have
-     * the equivalent attributes.
-     */
-    @Override
-    public int compareTo(Date date) {
-        if (this.equals(date)) {
-            return 0;
-        }
-        if (this.year < date.year) {
-            return -1;
-        }
-        if (this.year == date.year) {
-            if (this.month == date.month) {
-                if (this.day < date.day) {
-                    return -1;
-                }
-            } else if (this.month < date.month) {
-                return -1;
-            }
-        }
-        return 1;
-    }
-
-    /**
-     * Determines if this Date and another object have equivalent attributes.
-     *
-     * @param obj the object that this Date object is being compared to.
-     * @return true if both objects are Date objects with the same
-     * attributes, false otherwise.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Date) {
-            Date date = (Date) obj;
-            return (date.month == this.month && date.day == this.day &&
-                    date.year == this.year);
-        }
-        return false;
-    }
-
-    /**
-     * Generates a String representation of this Date object.
-     *
-     * @return the String representation of this Date object.
-     */
-    @Override
-    public String toString() {
-        return month + "/" + day + "/" + year;
     }
 }
